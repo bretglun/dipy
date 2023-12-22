@@ -603,7 +603,7 @@ def register_series(series, ref, pipeline=None, series_affine=None,
         ref_as_idx = ref
         idxer = np.zeros(series.shape[-1]).astype(bool)
         idxer[ref] = True
-        ref = series[..., idxer].squeeze()
+        ref = np.atleast_3d(series[..., idxer].squeeze())
         ref_affine = series_affine
     else:
         ref_as_idx = False

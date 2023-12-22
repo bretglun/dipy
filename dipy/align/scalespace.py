@@ -395,7 +395,7 @@ class IsotropicScaleSpace(ScaleSpace):
             for j in range(self.dim):
                 if j != min_index:
                     # Select the factor that maximizes isotropy
-                    shrink_factors[j] = factor
+                    shrink_factors[j] = min(factor, input_size[j])
                     new_spacing[j] = input_spacing[j] * factor
                     min_diff = np.abs(new_spacing[j] - new_spacing[min_index])
                     for f in range(1, factor):
